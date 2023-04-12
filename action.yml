@@ -1,0 +1,8 @@
+name: 'Together JavaScript Action'
+description: 'github javascript action to help run actions with other repositories PRs mentioned in description'
+outputs:
+  refs: # key/values of repo-name/related-ref
+    description: 'git refs to use for related repositories'
+runs:
+  using: 'node16'
+  main: 'index.js'
