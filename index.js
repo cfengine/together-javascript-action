@@ -20,7 +20,7 @@ async function run () {
 
   const body = pullRequest.body
   //          console.log("found body=",body);
-  const regexp = /https:\/\/github.com\/cfengine\/([a-z]*)\/pull\/(\d*)/g
+  const regexp = /https:\/\/github.com\/cfengine\/([A-Za-z0-9_.-]*)\/pull\/(\d*)/g
   const matches = body.matchAll(regexp)
   for (const match of matches) {
     core.setOutput(match[1], 'refs/pull/' + match[2] + '/merge')
