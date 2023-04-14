@@ -23,7 +23,7 @@ async function run () {
   const regexp = /https:\/\/github.com\/cfengine\/([a-z]*)\/pull\/(\d*)/g
   const matches = body.matchAll(regexp)
   for (const match of matches) {
-    core.setOutput(match[1], 'refs/pull/' + match[2] + '/head')
+    core.setOutput(match[1], 'refs/pull/' + match[2] + '/merge')
   }
 }
 
