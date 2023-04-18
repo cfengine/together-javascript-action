@@ -14,7 +14,7 @@ TODO: If the PR referenced is no longer available: error out.
 
 ## Usage
 In your workflow you can use a ref value for checkout of either the output of this action
-or 'master' if there is no given reference for that repo.
+or github.baseref if there is no given reference for that repo.
 
 In your workflow use this action to get any related pulls as git ref paths.
 For actions/checkout github action if the `ref:` attribute is empty the default value will usually make sense like the default branch.
