@@ -34,6 +34,7 @@ For public repos you can use a `uses` element:
           path: core
           ref: ${{steps.together.outputs.core}}
           submodules: recursive
+```
 
 For private repos you must checkout the action:
 
