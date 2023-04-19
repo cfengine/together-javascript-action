@@ -23,7 +23,7 @@ For public repos you can use a `uses` element:
 ```
     steps: 
       - name: Get Togethers
-        uses: cfengine/together-javascript-action@v1.3
+        uses: cfengine/together-javascript-action@v1.4
         id: together
         with:
           myToken: ${{ secrets.GITHUB_TOKEN }}
@@ -44,7 +44,7 @@ For private repos you must checkout the action:
         uses: actions/checkout@v3
         with:
           repository: cfengine/together-javascript-action
-          ref: v1.3
+          ref: v1.4
       - name: Action step
         uses: ./
         id: together
