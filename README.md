@@ -13,7 +13,9 @@ TODO: If the PR referenced is no longer available: error out.
 
 ## Usage
 In your workflow use this action to get any related pulls as git ref paths.
-For actions/checkout github action if the `ref:` attribute is empty the default value will usually make sense like the default branch.
+The `ref:` attribute in action/checkout, if empty, will default to the default branch, which typically is not what we want for workflows that operate on non-default branches.
+`github.base_ref` is only set during a `pull_request` event and is needed in case of a non-default branch.
+`github.ref` is the appropriate ref to use during a merge workflow as it will refer to the branch in which we just merged.
 
 For public repos you can use a `uses` element:
 
@@ -29,7 +31,7 @@ For public repos you can use a `uses` element:
         with:
           repository: cfengine/core
           path: core
-          ref: ${{steps.together.outputs.core}}
+          ref: ${{steps.together.outputs.core || github.base_ref || github.ref}}
           submodules: recursive
 ```
 
@@ -55,13 +57,13 @@ Otherwise that checkout will replace/overwrite previous checkouts and cause trou
         with:
           repository: cfengine/core
           path: core
-          ref: ${{steps.together.outputs.core}}
+          ref: ${{steps.together.outputs.core || github.base_ref || github.ref}}
           submodules: recursive
       - name: Checkout My Private Repo
         uses: actions/checkout@v3
         with:
           path: my-private-repo
-          ref: ${{steps.together.outputs.my-private-repo}}
+          ref: ${{steps.together.outputs.my-private-repo || github.base_ref || github.ref}}
 ```
 
 
