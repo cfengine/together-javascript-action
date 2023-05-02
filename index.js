@@ -25,7 +25,7 @@ async function run () {
   const body = pullRequest.body
   //          console.log("found body=",body);
   const regexp = /https:\/\/github.com\/cfengine\/([A-Za-z0-9_.-]*)\/pull\/(\d*)/g
-  const matches = []
+  var matches = []
   if (body) {
     matches = body.matchAll(regexp)
   }
