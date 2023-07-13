@@ -30,7 +30,8 @@ async function run () {
     matches = body.matchAll(regexp)
   }
   for (const match of matches) {
-    core.setOutput(match[1], 'refs/pull/' + match[2] + '/merge')
+    // here we use /head instead of /merge as we have found that /merge results can often be out of date
+    core.setOutput(match[1], 'refs/pull/' + match[2] + '/head')
   }
 }
 
