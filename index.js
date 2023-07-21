@@ -5,7 +5,7 @@ const context = github.context
 async function run () {
   if (context.payload.pull_request == null) {
     // not a pull request, probably a merge action, so action should use defaults, usually 'master'
-    return;
+    return
   }
   const myToken = core.getInput('myToken')
   // use myToken: ${{ secrets.GITHUB_TOKEN }} in your workflow
@@ -25,7 +25,7 @@ async function run () {
   const body = pullRequest.body
   //          console.log("found body=",body);
   const regexp = /https:\/\/github.com\/cfengine\/([A-Za-z0-9_.-]*)\/pull\/(\d*)/g
-  var matches = []
+  let matches = []
   if (body) {
     matches = body.matchAll(regexp)
   }
