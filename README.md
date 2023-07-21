@@ -77,3 +77,10 @@ git push --follow-tags
 ```
 
 Then you will have to visit all of the workflows that use this action and upgrade their version as appropriate.
+
+## Code Quality
+
+Please use eslint and check the javascript before submitting pull requests.
+
+npm install -g eslint
+eslint index.js
