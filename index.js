@@ -20,7 +20,7 @@ async function run () {
   const { data: pullRequest } = await octokit.rest.pulls.get(
     req
   )
-  // console.log("pullRequest is ", pullRequest);
+  console.log("pullRequest is ", pullRequest);
 
   const body = pullRequest.body
   //          console.log("found body=",body);
@@ -31,6 +31,7 @@ async function run () {
   }
   for (const match of matches) {
     core.setOutput(match[1], 'refs/pull/' + match[2] + '/merge')
+    console.log(`added ${match[1]} => refs/pull/${match[2]}/merge`);
   }
 }
 
