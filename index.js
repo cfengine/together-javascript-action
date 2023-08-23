@@ -33,6 +33,8 @@ async function run () {
     core.setOutput(match[1], 'refs/pull/' + match[2] + '/merge')
     console.log(`added ${match[1]} => refs/pull/${match[2]}/merge`);
   }
+  core.setOutput(context.payload.repository.name, context.ref);
+  console.log(`added pull request ref ${context.payload.repository.name} => ${context.ref}`);
 }
 
 run()
