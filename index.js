@@ -10,7 +10,7 @@ async function run () {
   const myToken = core.getInput('myToken')
   // use myToken: ${{ secrets.GITHUB_TOKEN }} in your workflow
   const octokit = github.getOctokit(myToken)
-  // console.log(github);
+  console.log("github object is ", github);
   const req = {
     owner: context.payload.repository.owner.login,
     repo: context.payload.repository.name,
@@ -33,6 +33,8 @@ async function run () {
     core.setOutput(match[1], 'refs/pull/' + match[2] + '/merge')
     console.log(`added ${match[1]} => refs/pull/${match[2]}/merge`);
   }
+  core.setOutput(context.payload.repository.name, context.ref);
+  console.log(`added pull request ref ${context.payload.repository.name} => ${context.ref}`);
 }
 
 run()
