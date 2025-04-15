@@ -10,17 +10,17 @@ async function run () {
   const myToken = core.getInput('myToken')
   // use myToken: ${{ secrets.GITHUB_TOKEN }} in your workflow
   const octokit = github.getOctokit(myToken)
-  // console.log(github);
+  core.info(github);
   const req = {
     owner: context.payload.repository.owner.login,
     repo: context.payload.repository.name,
     pull_number: context.payload.pull_request.number
   }
-  // console.log("req is ", req);
+  core.info("req is ", req);
   const { data: pullRequest } = await octokit.rest.pulls.get(
     req
   )
-  // console.log("pullRequest is ", pullRequest);
+  core.info("pullRequest is ", pullRequest);
 
   const body = pullRequest.body
   //          console.log("found body=",body);
